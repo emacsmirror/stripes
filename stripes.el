@@ -54,16 +54,8 @@
 ;; --- Version 0.1 (2003-10-02)
 
 ;;; Code:
-(defvar stripes-mode nil)
-(make-variable-buffer-local 'stripes-mode)
-
 (defvar stripes-lcount 1)
 (make-variable-buffer-local 'stripes-lcount)
-
-(or (assq 'stripes-mode minor-mode-alist)
-    (setq minor-mode-alist
-          (cons '(stripes-mode " ==")
-                minor-mode-alist)))
 
 (defface stripes-face
   `((t (:background "#f4f4f4")))
@@ -71,23 +63,7 @@
   :group 'stripes)
 
 ;;;###autoload
-(defun stripes-mode (arg)
-  "Toggle Color alternation mode.
-With prefix ARG, enable Color alternation mode iff arg is nonzero.  In
-that case the numeric arg (unless it is made by (multiple)
-`\\[universal-argument]'s) specifies the number of subsequent lines
-that should
-be in one color (without alternation)."
-  (interactive "P")
-  (setq stripes-mode
-        (if (null arg)
-            (not stripes-mode)
-          (> (prefix-numeric-value arg) 0)))
-  (setq stripes-lcount
-        (if (numberp arg)
-            arg
-          1))
-  (force-mode-line-update)
+(define-minor-mode stripes-mode "Highlight alternating lines differently."
   (if stripes-mode
       (stripes-create)
     (stripes-remove))
@@ -98,17 +74,6 @@ be in one color (without alternation)."
           (message "Color alternation mode (%i lines) enabled"
                    stripes-lcount))
       (message "Color alternation mode disabled"))))
-
-;;;###autoload
-(defun turn-on-stripes-mode ()
-  "Turn on color alternation mode.
-Useful for adding to a major mode hook variable.
-Example:
-    (add-hook 'gnus-summary-mode-hook 'turn-on-stripes-mode)
-to automatically turn on color alternation when viewing the Gnus
-article buffer."
-  (interactive)
-  (stripes-mode 1))
 
 (defun stripes-remove ()
   "Remove all alternation colors."
