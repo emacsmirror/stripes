@@ -1,11 +1,14 @@
-;;; stripes.el --- alternate the background color of lines
+;;; stripes.el --- highlight alternating lines differently -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2003 Michael Schierl
 
 ;; Author: Michael Schierl <schierlm-public@gmx.de>
+;;         Štěpán Němec <stepnem@gmail.com>
+;; Maintainer: Štěpán Němec <stepnem@gmail.com>
 ;; Created: 02 October 2003
 ;; Keywords: list alternation color
-;; Version: 0.2
+;; Tested-with: GNU Emacs 26
+;; Version: 0.3a
 
 ;; This file is not part of GNU Emacs.
 
@@ -30,7 +33,8 @@
 ;; these lines.
 
 ;;; Code:
-(defconst stripes-version "0.2" "Current version of the stripes.el library.")
+(defconst stripes-version "0.3a" ; FIXME
+  "Current version of the stripes.el library.")
 
 (defvar stripes-lcount 1)
 (make-variable-buffer-local 'stripes-lcount)
