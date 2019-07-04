@@ -91,13 +91,13 @@ be in one color (without alternation)."
   (if stripes-mode
       (stripes-create)
     (stripes-remove))
-  (if (interactive-p)
-      (if stripes-mode
-          (if (= stripes-lcount 1)
-              (message "Color alternation mode enabled")
-            (message "Color alternation mode (%i lines) enabled"
-                     stripes-lcount))
-        (message "Color alternation mode disabled"))))
+  (when (called-interactively-p 'interactive)
+    (if stripes-mode
+        (if (= stripes-lcount 1)
+            (message "Color alternation mode enabled")
+          (message "Color alternation mode (%i lines) enabled"
+                   stripes-lcount))
+      (message "Color alternation mode disabled"))))
 
 ;;;###autoload
 (defun turn-on-stripes-mode ()
