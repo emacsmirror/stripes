@@ -7,9 +7,6 @@
 ;; Keywords: list alternation color
 ;; Version: 0.2
 
-(defconst stripes-version "0.2"
-  "Version of color alternation mode.")
-
 ;; This file is not part of GNU Emacs.
 
 ;; This program is free software; you can redistribute it and/or
@@ -23,37 +20,18 @@
 ;; General Public License for more details.
 
 ;; You should have received a copy of the GNU General Public License
-;; along with GNU Emacs; see the file COPYING.  If not, write to the
-;; Free Software Foundation, Inc., 59 Temple Place - Suite 330,
-;; Boston, MA 02111-1307, USA.
+;; along with GNU Emacs.  If not, see <https://www.gnu.org/licenses/>.
 
 ;;; Commentary:
 
-;; highlights every even line with an alternative background
-;; color. Useful for buffers that display lists of any kind - as a
-;; guide for your eyes to follow these lines.
-
-;; when invoked with a numeric prefix arg, color that many lines
-;; instead of every other line.
-
-;; Put this file into your load path,
-;; (require 'stripes) and do a (turn-on-stripes-mode)
-;;  whenever you need this (e.g. in hooks).
-
-;; Changelog
-
-;; --- Version 0.2 (2003-11-01)
-
-;; - added autoload cookies
-;; - added turn-on method (for hooks)
-;; - prefix arg specifies how many lines to treat as one line
-;; - renamed the file from stripes-mode.el to stripes.el to
-;;   make the name fit into the Emacs file naming conventions
-;; - widen all restrictions when refreshing
-
-;; --- Version 0.1 (2003-10-02)
+;; Highlight every even line (or every other `stripes-lcount' lines)
+;; with an alternative background color.  Useful for buffers that
+;; display lists of any kind, as a guide for your eyes to follow
+;; these lines.
 
 ;;; Code:
+(defconst stripes-version "0.2" "Current version of the stripes.el library.")
+
 (defvar stripes-lcount 1)
 (make-variable-buffer-local 'stripes-lcount)
 
