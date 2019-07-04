@@ -147,9 +147,6 @@ and LENGTH are not used."
 (add-hook 'after-change-functions
           'stripes-after-change-function)
 
-;; legacy provide (if you have installed an old version as well)
-(provide 'stripes-mode)
-
 (provide 'stripes)
 
 ;;; stripes.el ends here
