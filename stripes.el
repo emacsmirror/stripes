@@ -31,13 +31,12 @@
 ;; with an alternative background color.  Useful for buffers that
 ;; display lists of any kind, as a guide for your eyes to follow
 ;; these lines.
-
+
 ;;; Code:
 (defconst stripes-version "0.3a" ; FIXME
   "Current version of the stripes.el library.")
 
-(defvar stripes-lcount 1)
-(make-variable-buffer-local 'stripes-lcount)
+(defvar-local stripes-lcount 1)
 
 (defface stripes-face
   `((t (:background "#f4f4f4")))
@@ -45,54 +44,37 @@
   :group 'stripes)
 
 ;;;###autoload
-(define-minor-mode stripes-mode "Highlight alternating lines differently."
+(define-minor-mode stripes-mode
+  "Highlight alternating lines differently." nil nil nil
   (if stripes-mode
-      (stripes-create)
-    (stripes-remove))
+      (progn
+        (stripes-create)
+        (add-hook 'after-change-functions #'stripes-create nil t))
+    (stripes-remove)
+    (remove-hook 'after-change-functions #'stripes-create t))
   (when (called-interactively-p 'interactive)
     (if stripes-mode
         (if (= stripes-lcount 1)
-            (message "Color alternation mode enabled")
-          (message "Color alternation mode (%i lines) enabled"
+            (message "Stripes mode enabled")
+          (message "Stripes mode (%i lines) enabled"
                    stripes-lcount))
-      (message "Color alternation mode disabled"))))
-
+      (message "Stripes mode disabled"))))
+
 (defun stripes-remove ()
   "Remove all alternation colors."
-  (let ((oli (overlays-in (point-min) (point-max))) ol)
-    (while oli
-      (setq ol (car oli)
-            oli (cdr oli))
-      (when (eq (overlay-get ol 'face) 'stripes-face)
-        (delete-overlay ol)))))
+  (remove-overlays nil nil 'face 'stripes-face))
 
-(defun stripes-create ()
-  "Colors lines in current buffer alternatively.
-This will not monitor changes of the buffer."
+(defun stripes-create (&rest _)
+  "Color alternate lines in current buffer differently."
+  (stripes-remove)
   (save-excursion
-    (save-restriction
-      (widen)
-      (stripes-remove)
-      (goto-char (point-min))
-      (while (not (eobp))
-        (forward-line stripes-lcount)
-        (let ((ppp (point))
-              ovl)
-          (unless (eobp)
-            (forward-line stripes-lcount)
-            (setq ovl (make-overlay ppp (point)))
-            (overlay-put ovl 'face 'stripes-face)))))))
-
-(defun stripes-after-change-function (beg end length)
-  "After change function for color alternation mode.
-Refreshes all the highlighting.  This is slow, but as mostly lists are
-not changed that often, it should be acceptable.  Arguments BEG END
-and LENGTH are not used."
-  (if stripes-mode
-      (stripes-create)))
-
-(add-hook 'after-change-functions
-          'stripes-after-change-function)
+    (goto-char (point-min))
+    (while (not (eobp))
+      (forward-line stripes-lcount)
+      (let ((p (point)))
+        (unless (eobp)
+          (forward-line stripes-lcount)
+          (overlay-put (make-overlay p (point)) 'face 'stripes-face))))))
 
 (provide 'stripes)
 
