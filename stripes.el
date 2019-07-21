@@ -38,7 +38,7 @@
 
 (defvar-local stripes-lcount 1)
 
-(defface stripes-face
+(defface stripes
   `((t (:background "#f4f4f4")))
   "Face for alternate lines."
   :group 'stripes)
@@ -62,7 +62,7 @@
 
 (defun stripes-remove ()
   "Remove all alternation colors."
-  (remove-overlays nil nil 'face 'stripes-face))
+  (remove-overlays nil nil 'face 'stripes))
 
 (defun stripes-create (&rest _)
   "Color alternate lines in current buffer differently."
@@ -74,7 +74,7 @@
       (let ((p (point)))
         (unless (eobp)
           (forward-line stripes-lcount)
-          (overlay-put (make-overlay p (point)) 'face 'stripes-face))))))
+          (overlay-put (make-overlay p (point)) 'face 'stripes))))))
 
 (provide 'stripes)
 
