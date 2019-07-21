@@ -6,7 +6,7 @@
 ;;         Štěpán Němec <stepnem@gmail.com>
 ;; Maintainer: Štěpán Němec <stepnem@gmail.com>
 ;; Created: 02 October 2003
-;; Keywords: list alternation color
+;; Keywords: convenience faces
 ;; Tested-with: GNU Emacs 26
 ;; Version: 0.3a
 
