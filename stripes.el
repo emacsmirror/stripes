@@ -31,6 +31,18 @@
 ;; with an alternative background color.  Useful for buffers that
 ;; display lists of any kind, as a guide for your eyes to follow
 ;; these lines.
+
+;; This is an updated version of Michael's library which can still be
+;; found at https://www.emacswiki.org/emacs/stripes.el
+
+;; Before deciding to go the minimal way I also stumbled upon (and
+;; discarded just by looking at) the following:
+
+;;   https://github.com/sabof/stripe-buffer
+
+;; ...and an apparently unfinished attempt at rewriting the mess:
+
+;;   https://github.com/michael-heerdegen/stripe-buffer
 
 ;;; Code:
 (defconst stripes-version "0.3a" ; FIXME
