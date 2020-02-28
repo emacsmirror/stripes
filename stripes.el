@@ -13,10 +13,9 @@
 
 ;;; Commentary:
 
-;; Highlight every even line (or every other `stripes-lcount' lines)
-;; with an alternative background color.  Useful for buffers that
-;; display lists of any kind, as a guide for your eyes to follow
-;; these lines.
+;; Highlight every other `stripes-unit' lines with an alternative
+;; background color.  Useful for buffers that display lists of any
+;; kind, as a guide for your eyes to follow these lines.
 
 ;; This is an updated version of Michael's library which can still be
 ;; found at https://www.emacswiki.org/emacs/stripes.el
@@ -31,8 +30,11 @@
 ;;   https://github.com/michael-heerdegen/stripe-buffer
 
 ;;; Code:
+(defgroup stripes () "Highlight alternating lines differently."
+  :group 'convenience)
 
-(defvar-local stripes-lcount 1)
+(defcustom stripes-unit 1 "Number of lines making up a single color unit."
+  :type 'integer)
 
 (defface stripes
   `((t (:background "#f4f4f4")))
@@ -50,10 +52,10 @@
     (remove-hook 'after-change-functions #'stripes-create t))
   (when (called-interactively-p 'interactive)
     (if stripes-mode
-        (if (= stripes-lcount 1)
+        (if (= stripes-unit 1)
             (message "Stripes mode enabled")
           (message "Stripes mode (%i lines) enabled"
-                   stripes-lcount))
+                   stripes-unit))
       (message "Stripes mode disabled"))))
 
 (defun stripes-remove ()
@@ -66,12 +68,11 @@
   (save-excursion
     (goto-char (point-min))
     (while (not (eobp))
-      (forward-line stripes-lcount)
+      (forward-line stripes-unit)
       (let ((p (point)))
         (unless (eobp)
-          (forward-line stripes-lcount)
+          (forward-line stripes-unit)
           (overlay-put (make-overlay p (point)) 'face 'stripes))))))
 
 (provide 'stripes)
-
 ;;; stripes.el ends here
