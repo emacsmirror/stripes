@@ -7,9 +7,9 @@
 ;; URL: https://gitlab.com/stepnem/stripes-el
 ;; Keywords: convenience faces
 ;; License: public domain
+;; Version: 0.3pre
 ;; Tested-with: GNU Emacs 26, 27, 28
-;; Version: 0.3a
-;; Package-Requires: ((emacs "24.3"))
+;; Package-Requires: ((emacs "24"))
 
 ;;; Commentary:
 
@@ -17,17 +17,20 @@
 ;; background color.  Useful for buffers that display lists of any
 ;; kind, as a guide for your eyes to follow these lines.
 
-;; This is an updated version of Michael's library which can still be
-;; found at https://www.emacswiki.org/emacs/stripes.el
-
 ;; Before deciding to go the minimal way I also stumbled upon (and
 ;; discarded just by looking at) the following:
 
 ;;   https://github.com/sabof/stripe-buffer
 
-;; ...and an apparently unfinished attempt at rewriting the mess:
+;; ...and an apparently unfinished attempt at rewriting it:
 
 ;;   https://github.com/michael-heerdegen/stripe-buffer
+
+;; Michael Schierl's last version (0.2) this is based off can still be
+;; found in the git repository (first commit) or at the EmacsWiki:
+;; https://www.emacswiki.org/emacs/stripes.el
+
+;; Corrections and constructive feedback appreciated.
 
 ;;; Code:
 (defgroup stripes () "Highlight alternating lines differently."
