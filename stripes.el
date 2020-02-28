@@ -33,7 +33,7 @@
 (defgroup stripes () "Highlight alternating lines differently."
   :group 'convenience)
 
-(defcustom stripes-unit 1 "Number of lines making up a single color unit."
+(defcustom stripes-unit 3 "Number of lines making up a single color unit."
   :type 'integer)
 
 (defface stripes
