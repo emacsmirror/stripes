@@ -6,9 +6,11 @@
 ;;         Štěpán Němec <stepnem@gmail.com>
 ;; Maintainer: Štěpán Němec <stepnem@gmail.com>
 ;; Created: 02 October 2003
+;; URL: https://gitlab.com/stepnem/stripes-el
 ;; Keywords: convenience faces
-;; Tested-with: GNU Emacs 26
+;; Tested-with: GNU Emacs 26, 27, 28
 ;; Version: 0.3a
+;; Package-Requires: ((emacs "24.3"))
 
 ;; This file is not part of GNU Emacs.
 
