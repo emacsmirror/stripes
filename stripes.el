@@ -36,10 +36,9 @@
 (defcustom stripes-unit 3 "Number of lines making up a single color unit."
   :type 'integer)
 
-(defface stripes
-  `((t (:background "#f4f4f4")))
-  "Face for alternate lines."
-  :group 'stripes)
+(defface stripes '(((background dark) (:background "#222222"))
+                   ((background light) (:background "#f4f4f4")))
+  "Face for alternate lines.")
 
 ;;;###autoload
 (define-minor-mode stripes-mode
