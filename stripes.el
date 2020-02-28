@@ -31,8 +31,6 @@
 ;;   https://github.com/michael-heerdegen/stripe-buffer
 
 ;;; Code:
-(defconst stripes-version "0.3a" ; FIXME
-  "Current version of the stripes.el library.")
 
 (defvar-local stripes-lcount 1)
 
