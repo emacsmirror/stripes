@@ -42,7 +42,11 @@
 
 ;;;###autoload
 (define-minor-mode stripes-mode
-  "Highlight alternating lines differently." nil nil nil
+  "Highlight alternating lines differently.
+
+Highlight every other `stripes-unit' lines with an alternative
+background color.  Useful for buffers that display lists of any
+kind, as a guide for your eyes to follow these lines." nil nil nil
   (if stripes-mode
       (progn
         (stripes-create)
