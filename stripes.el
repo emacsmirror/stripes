@@ -36,8 +36,15 @@
 (defcustom stripes-unit 3 "Number of lines making up a single color unit."
   :type 'integer)
 
-(defface stripes '(((background dark) (:background "#222222"))
-                   ((background light) (:background "#f4f4f4")))
+(defface stripes `((((min-colors 88) (background dark))
+                    ,(append '(:background "#222222")
+                             (unless (version< emacs-version "27")
+                               '(:extend t))))
+                   (((min-colors 88) (background light))
+                    ,(append '(:background "#f4f4f4")
+                             (unless (version< emacs-version "27")
+                               '(:extend t))))
+                   (t (:italic t)))
   "Face for alternate lines.")
 
 ;;;###autoload
