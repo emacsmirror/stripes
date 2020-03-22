@@ -7,7 +7,7 @@
 ;; URL: https://gitlab.com/stepnem/stripes-el
 ;; Keywords: convenience faces
 ;; License: public domain
-;; Version: 0.3pre
+;; Version: 0.3
 ;; Tested-with: GNU Emacs 26, 27, 28
 ;; Package-Requires: ((emacs "24"))
 
