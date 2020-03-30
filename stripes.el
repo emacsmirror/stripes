@@ -7,7 +7,7 @@
 ;; URL: https://gitlab.com/stepnem/stripes-el
 ;; Keywords: convenience faces
 ;; License: public domain
-;; Version: 0.3.1
+;; Version: 0.3.1.1
 ;; Tested-with: GNU Emacs 26, 27, 28
 ;; Package-Requires: ((emacs "24"))
 
@@ -21,7 +21,7 @@
 ;; which you can invoke manually or from a suitable hook.  Note that
 ;; in some cases the choice of the right hook might not be entirely
 ;; obvious, e.g. for `dired' you have to use `dired-after-readin-hook'
-;; instead of `dired-mode-hook', as explained here:
+;; instead of `dired-mode-hook' unless you're using Emacs >= 28:
 ;; https://gitlab.com/stepnem/stripes-el/-/issues/1#note_309176403
 
 ;;; Related / history:
