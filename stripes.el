@@ -7,9 +7,9 @@
 ;; URL: https://gitlab.com/stepnem/stripes-el
 ;; Keywords: convenience faces
 ;; License: public domain
-;; Version: 0.3.1.1
+;; Version: 0.4b
 ;; Tested-with: GNU Emacs 26, 27, 28
-;; Package-Requires: ((emacs "24"))
+;; Package-Requires: ((emacs "24.3"))
 
 ;;; Commentary:
 
@@ -65,20 +65,28 @@
 
 Highlight every other `stripes-unit' lines with an alternative
 background color.  Useful for buffers that display lists of any
-kind, as a guide for your eyes to follow these lines." nil nil nil
+kind, as a guide for your eyes to follow these lines.
+
+When called interactively with a positive prefix argument, set
+`stripes-unit' locally (= in the current buffer) to its value, in
+addition to enabling the mode." nil nil nil
+  (unless (or executing-kbd-macro noninteractive)
+    (if (not stripes-mode)
+        (message "Stripes mode disabled")
+      (when current-prefix-arg
+        (let ((num (prefix-numeric-value current-prefix-arg)))
+          (when (> num 0)
+            (setq-local stripes-unit num))))
+      (if (= stripes-unit 1)
+          (message "Stripes mode enabled")
+        (message "Stripes mode (%i lines) enabled"
+                 stripes-unit))))
   (if stripes-mode
       (progn
         (stripes-create)
         (add-hook 'after-change-functions #'stripes-create nil t))
     (stripes-remove)
-    (remove-hook 'after-change-functions #'stripes-create t))
-  (when (called-interactively-p 'interactive)
-    (if stripes-mode
-        (if (= stripes-unit 1)
-            (message "Stripes mode enabled")
-          (message "Stripes mode (%i lines) enabled"
-                   stripes-unit))
-      (message "Stripes mode disabled"))))
+    (remove-hook 'after-change-functions #'stripes-create t)))
 
 (defun stripes-remove ()
   "Remove all alternation colors."
