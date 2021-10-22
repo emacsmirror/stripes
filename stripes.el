@@ -99,8 +99,8 @@ addition to enabling the mode." :lighter ""
     (goto-char (point-min))
     (while (not (eobp))
       (forward-line stripes-unit)
-      (let ((p (point)))
-        (unless (eobp)
+      (unless (eobp)
+        (let ((p (point)))
           (forward-line stripes-unit)
           (overlay-put (make-overlay p (point)) 'face 'stripes))))))
 
