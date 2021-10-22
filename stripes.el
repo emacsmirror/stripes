@@ -69,7 +69,7 @@ kind, as a guide for your eyes to follow these lines.
 
 When called interactively with a positive prefix argument, set
 `stripes-unit' locally (= in the current buffer) to its value, in
-addition to enabling the mode." nil nil nil
+addition to enabling the mode." :lighter ""
   (unless (or executing-kbd-macro noninteractive)
     (if (not stripes-mode)
         (message "Stripes mode disabled")
