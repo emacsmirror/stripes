@@ -8,7 +8,7 @@
 ;; Keywords: convenience faces
 ;; License: public domain
 ;; Version: 0.4b
-;; Tested-with: GNU Emacs 26, 27, 28
+;; Tested-with: GNU Emacs 29
 ;; Package-Requires: ((emacs "24.3"))
 
 ;;; Commentary:
