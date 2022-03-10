@@ -48,6 +48,12 @@
 (defcustom stripes-unit 3 "Number of lines making up a single color unit."
   :type 'integer)
 
+(defcustom stripes-overlay-priority nil
+  "Priority of stripe overlays.
+See Info node `(elisp) Overlay Properties' for allowed values and
+their semantics."
+  :type '(choice (const nil) integer))
+
 (defface stripes `((((min-colors 88) (background dark))
                     (:background "#222222"
                                  ,@(unless (version< emacs-version "27")
@@ -102,7 +108,9 @@ addition to enabling the mode." :lighter ""
       (unless (eobp)
         (let ((p (point)))
           (forward-line stripes-unit)
-          (overlay-put (make-overlay p (point)) 'face 'stripes))))))
+          (let ((ol (make-overlay p (point))))
+            (overlay-put ol 'face 'stripes)
+            (overlay-put ol 'priority stripes-overlay-priority)))))))
 
 (provide 'stripes)
 ;;; stripes.el ends here
