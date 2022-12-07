@@ -1,8 +1,8 @@
 ;;; stripes.el --- highlight alternating lines differently -*- lexical-binding: t -*-
 
 ;; Author: Michael Schierl <schierlm-public@gmx.de>
-;;         Štěpán Němec <stepnem@gmail.com>
-;; Maintainer: Štěpán Němec <stepnem@gmail.com>
+;;         Štěpán Němec <stepnem@smrk.net>
+;; Maintainer: Štěpán Němec <stepnem@smrk.net>
 ;; Created: 02 October 2003
 ;; URL: https://gitlab.com/stepnem/stripes-el
 ;; Keywords: convenience faces
