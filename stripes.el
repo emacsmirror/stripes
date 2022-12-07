@@ -52,7 +52,8 @@
   "Priority of stripe overlays.
 See Info node `(elisp) Overlay Properties' for allowed values and
 their semantics."
-  :type '(choice (const nil) integer))
+  :type '(choice (const nil) integer)
+  :package-version '(stripes . "0.4"))
 
 (defface stripes `((((min-colors 88) (background dark))
                     (:background "#222222"
