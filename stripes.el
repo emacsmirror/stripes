@@ -4,7 +4,7 @@
 ;;         Štěpán Němec <stepnem@smrk.net>
 ;; Maintainer: Štěpán Němec <stepnem@smrk.net>
 ;; Created: 02 October 2003
-;; URL: https://gitlab.com/stepnem/stripes-el
+;; URL: http://git.smrk.net/stripes.el
 ;; Keywords: convenience faces
 ;; License: public domain
 ;; Version: 0.4b
