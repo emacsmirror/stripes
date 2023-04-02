@@ -39,9 +39,11 @@
 ;; found in the git repository (first commit) or at the EmacsWiki:
 ;; https://www.emacswiki.org/emacs/stripes.el
 
-;; Corrections and constructive feedback appreciated.
-
+;; Corrections and productive feedback appreciated, publicly
+;; (<public@smrk.net>, inbox.smrk.net) or in private.
+
 ;;; Code:
+
 (defgroup stripes () "Highlight alternating lines differently."
   :group 'convenience)
 
